@@ -2,7 +2,9 @@
 
 <p align="center"><img src="cStop.png"></p>
 
-cStop is a tape stop audio effect plugin available in AU & VST3 for Mac (Windows coming soon). The design is easy to use and there are some extra features that let you do all kinds of different starting and stopping effects. It's also free and open source.
+cStop is a tape stop audio effect plugin available in AU & VST3 for Mac (Windows coming soon). 
+
+The design is easy to use and there are some extra features that let you do all kinds of different starting and stopping effects. It's also free and open source.
 
 ## How to download
 
