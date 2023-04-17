@@ -20,10 +20,10 @@ add_subdirectory(JUCE)
 add_subdirectory(chowdsp_utils)
 
 juce_add_plugin(${PROJECT_NAME}
-    COMPANY_NAME "CalSound"
+    COMPANY_NAME "CalGoheen"
     COMPANY_WEBSITE "https://calgoheen.com"
     COMPANY_EMAIL "calgoheen@gmail.com"
-    BUNDLE_ID com.CalSound.cStop
+    BUNDLE_ID com.CalGoheen.cStop
     PLUGIN_MANUFACTURER_CODE Cals
     PLUGIN_CODE Csto
     IS_SYNTH FALSE
