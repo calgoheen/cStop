@@ -42,7 +42,7 @@ void TapeStop::prepare(double sr, int blockSize, int channels)
     reset();
 }
 
-void TapeStop::process(float** buffer, int startIdx, int numSamples)
+void TapeStop::process(float* const* buffer, int startIdx, int numSamples)
 {
     updateParams();
 

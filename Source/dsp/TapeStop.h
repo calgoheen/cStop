@@ -103,7 +103,7 @@ public:
     ~TapeStop() = default;
 
     void prepare(double sampleRate, int blockSize, int numChannels);
-    void process(float** buffer, int startIdx, int numSamples);
+    void process(float* const* buffer, int startIdx, int numSamples);
     void reset();
 
 private:
