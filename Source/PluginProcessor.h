@@ -32,7 +32,7 @@ private:
     const juce::StringArray notes = { "1/16", "1/12", "1/8", "1/6", "1/4", "1/3", "1/2", "1", "2" };
     const juce::NormalisableRange<float> noteRange { 0.0f, float (notes.size() - 1), 1.0f };
     const juce::NormalisableRange<float> lengthRange { TapeStop::MIN_TIME, 5.0f, 0.0f, 0.25f };
-    const std::function<juce::String (float)> floatValToNote { [this](float val) { return notes[int (val)]; } };
+    const std::function<juce::String (float)> floatValToNote { [this] (float val) { return notes[int (val)]; } };
 
 public:
     TapeStopParams tapeStop;

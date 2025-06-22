@@ -81,7 +81,7 @@ CStopEditor::CStopEditor (CStop& p)
     auto& bandpassButton = *filterType.getToggleButton (1);
     auto& highpassButton = *filterType.getToggleButton (2);
 
-    filterTypeAttachment.reset (new juce::ParameterAttachment (*state.params.tapeStop.filter.type, [&](float x) {
+    filterTypeAttachment.reset (new juce::ParameterAttachment (*state.params.tapeStop.filter.type, [&] (float x) {
         if (x == 0.0f)
             lowpassButton.setToggleState (true, juce::sendNotification);
         else if (x == 1.0f)
@@ -119,7 +119,7 @@ CStopEditor::CStopEditor (CStop& p)
     auto& orderButton_12db = *filterOrder.getToggleButton (0);
     auto& orderButton_24db = *filterOrder.getToggleButton (1);
 
-    filterOrderAttachment.reset (new juce::ParameterAttachment (*state.params.tapeStop.filter.order, [&](float x) {
+    filterOrderAttachment.reset (new juce::ParameterAttachment (*state.params.tapeStop.filter.order, [&] (float x) {
         if (x == 0.0f)
             orderButton_12db.setToggleState (true, juce::sendNotification);
         else

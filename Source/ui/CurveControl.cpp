@@ -215,15 +215,15 @@ void CurveControl::attachParameters (juce::RangedAudioParameter& startParam,
     juce::RangedAudioParameter& curveParam)
 {
     curveStartAttachment.reset (new juce::ParameterAttachment (startParam,
-        [this](float x) { setLeftEndpoint (x); }));
+        [this] (float x) { setLeftEndpoint (x); }));
     curveStartAttachment->sendInitialUpdate();
 
     curveEndAttachment.reset (new juce::ParameterAttachment (endParam,
-        [this](float x) { setRightEndpoint (x); }));
+        [this] (float x) { setRightEndpoint (x); }));
     curveEndAttachment->sendInitialUpdate();
 
     curveAttachment.reset (new juce::SliderParameterAttachment (curveParam, curveSlider));
-    curveSlider.onValueChange = [this]() {
+    curveSlider.onValueChange = [this] () {
         setCurve (curveSlider.getValue(), 1 - 2 * isSlowdownCurve);
     };
     curveAttachment->sendInitialUpdate();
