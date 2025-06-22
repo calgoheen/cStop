@@ -16,11 +16,16 @@ FetchContent_Declare(chowdsp_utils
     GIT_TAG v2.3.0)
 FetchContent_MakeAvailable(chowdsp_utils)
 
+FetchContent_Declare(clap-juce-extensions
+    GIT_REPOSITORY https://github.com/free-audio/clap-juce-extensions.git
+    GIT_TAG main)
+FetchContent_MakeAvailable(clap-juce-extensions)
+
 juce_add_plugin(${PROJECT_NAME}
     COMPANY_NAME "CalGoheen"
     COMPANY_WEBSITE "https://calgoheen.com"
     COMPANY_EMAIL "calgoheen@gmail.com"
-    BUNDLE_ID com.CalGoheen.cStop
+    BUNDLE_ID com.CalGoheen.${PROJECT_NAME}
     PLUGIN_MANUFACTURER_CODE Cals
     PLUGIN_CODE Csto
     IS_SYNTH FALSE
@@ -31,6 +36,10 @@ juce_add_plugin(${PROJECT_NAME}
     COPY_PLUGIN_AFTER_BUILD TRUE
     FORMATS Standalone AU VST3
     PRODUCT_NAME ${PROJECT_NAME})
+
+clap_juce_extensions_plugin(TARGET ${PROJECT_NAME}
+    CLAP_ID "com.CalGoheen.${PROJECT_NAME}"
+    CLAP_FEATURES "audio effect" "mono" "stereo")
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
