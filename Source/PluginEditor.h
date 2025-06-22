@@ -23,21 +23,21 @@ public:
 private:
     CStop& audioProcessor;
 
-    CTextButton _bypass, _stop, _start;
-    CToggleButton _bpm, _filterState;
-    CRadioGroup _filterType, _filterOrder;
-    CurveControl _slowdownCurve, _speedupCurve;
+    CTextButton bypass, stop, start;
+    CToggleButton bpm, filterState;
+    CRadioGroup filterType, filterOrder;
+    CurveControl slowdownCurve, speedupCurve;
 
-    Knob _slowdownTime, _speedupTime;
-    Knob _slowdownNote, _speedupNote;
-    Knob _filterFreq, _filterQ;
+    Knob slowdownTime, speedupTime;
+    Knob slowdownNote, speedupNote;
+    Knob filterFreq, filterQ;
 
-    SemiTransparentBox _filterBox;
+    SemiTransparentBox filterBox;
 
-    std::unique_ptr<juce::ButtonParameterAttachment> _filterStateAttachment, _bpmAttachment;
-    std::unique_ptr<juce::ParameterAttachment> _filterTypeAttachment, _filterOrderAttachment;
+    std::unique_ptr<juce::ButtonParameterAttachment> filterStateAttachment, bpmAttachment;
+    std::unique_ptr<juce::ParameterAttachment> filterTypeAttachment, filterOrderAttachment;
 
-    juce::Rectangle<int> _titleBounds, _filterBoxBounds;
+    juce::Rectangle<int> titleBounds, filterBoxBounds;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CStopEditor)
 };

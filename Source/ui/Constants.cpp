@@ -31,11 +31,11 @@ const float UI::CurveControl::gridStrokeSize      = 0.4f;
 const float UI::CurveControl::highlightOpacity    = 0.5f;
 
 const juce::Colour UI::CurveControl::bgColour         = UI::BaseColours::mediumgrey;
-const juce::Colour UI::CurveControl::outlineColour    = UI::BaseColours::mediumgrey.brighter(0.7);
+const juce::Colour UI::CurveControl::outlineColour    = UI::BaseColours::mediumgrey.brighter (0.7);
 const juce::Colour UI::CurveControl::pathColour       = UI::BaseColours::lightblue;
 const juce::Colour UI::CurveControl::highlightColour  = UI::BaseColours::lightblue;
-const juce::Colour UI::CurveControl::thumbColour      = UI::BaseColours::lightblue.brighter(0.4);
-const juce::Colour UI::CurveControl::gridColour       = UI::BaseColours::mediumgrey.brighter(0.7);
+const juce::Colour UI::CurveControl::thumbColour      = UI::BaseColours::lightblue.brighter (0.4);
+const juce::Colour UI::CurveControl::gridColour       = UI::BaseColours::mediumgrey.brighter (0.7);
 
 const int UI::Knob::knobWidth         = 65;
 const int UI::Knob::knobHeight        = 60;
@@ -62,9 +62,9 @@ const juce::Colour UI::Slider::bottomArcColour        = UI::BaseColours::mediumg
 const juce::Colour UI::Slider::topArcColour           = UI::BaseColours::lightblue;
 const juce::Colour UI::Slider::valueBoxTextColour     = UI::BaseColours::lightblue;
 
-const juce::Colour UI::TextButton::idleFillColour         = UI::BaseColours::lightblue.darker(0.1);
-const juce::Colour UI::TextButton::overFillColour         = UI::BaseColours::lightblue.brighter(0.2);
-const juce::Colour UI::TextButton::downFillColour         = UI::BaseColours::lightblue.darker(0.2);
+const juce::Colour UI::TextButton::idleFillColour         = UI::BaseColours::lightblue.darker (0.1);
+const juce::Colour UI::TextButton::overFillColour         = UI::BaseColours::lightblue.brighter (0.2);
+const juce::Colour UI::TextButton::downFillColour         = UI::BaseColours::lightblue.darker (0.2);
 const juce::Colour UI::TextButton::idleOutlineColour      = UI::BaseColours::darkgrey;
 const juce::Colour UI::TextButton::overOutlineColour      = UI::BaseColours::darkgrey;
 const juce::Colour UI::TextButton::downOutlineColour      = UI::BaseColours::darkgrey;
@@ -83,10 +83,10 @@ const juce::Colour UI::ToggleButton::downFillColour       = UI::ToggleButton::id
 const juce::Colour UI::ToggleButton::idleTextColour       = UI::BaseColours::lightblue;
 const juce::Colour UI::ToggleButton::overTextColour       = UI::ToggleButton::idleTextColour;
 const juce::Colour UI::ToggleButton::downTextColour       = UI::ToggleButton::idleTextColour;
-const juce::Colour UI::ToggleButton::idleOutlineColour    = UI::BaseColours::mediumgrey.brighter(0.7);
-const juce::Colour UI::ToggleButton::overOutlineColour    = UI::BaseColours::lightblue.darker(0.2);
-const juce::Colour UI::ToggleButton::downOutlineColour    = UI::BaseColours::lightblue.darker(0.5);
-const juce::Colour UI::ToggleButton::checkmarkColour      = UI::BaseColours::lightblue.darker(0.1);
+const juce::Colour UI::ToggleButton::idleOutlineColour    = UI::BaseColours::mediumgrey.brighter (0.7);
+const juce::Colour UI::ToggleButton::overOutlineColour    = UI::BaseColours::lightblue.darker (0.2);
+const juce::Colour UI::ToggleButton::downOutlineColour    = UI::BaseColours::lightblue.darker (0.5);
+const juce::Colour UI::ToggleButton::checkmarkColour      = UI::BaseColours::lightblue.darker (0.1);
 
 const float UI::SemiTransparentBox::boxAlpha = 0.6f;
 
@@ -95,7 +95,7 @@ const juce::Colour UI::SemiTransparentBox::boxColour = UI::BaseColours::darkgrey
 const juce::Colour UI::bgColour               = UI::BaseColours::darkgrey;
 const juce::Colour UI::titleColour            = UI::BaseColours::lightblue;
 const juce::Colour UI::filterBoxFillColour    = UI::BaseColours::bluegrey;
-const juce::Colour UI::filterBoxOutlineColour = UI::BaseColours::mediumgrey.brighter(0.7);
+const juce::Colour UI::filterBoxOutlineColour = UI::BaseColours::mediumgrey.brighter (0.7);
 
 const int UI::totalWidth  = 2 * UI::CurveControl::totalWidth + 16;
 const int UI::totalHeight = 2 * UI::Knob::totalHeight + UI::CurveControl::totalHeight + UI::textButtonHeight + 40;
