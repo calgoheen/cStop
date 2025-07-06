@@ -2,26 +2,41 @@
 
 <p align="center"><img src="cStop.png"></p>
 
-cStop is a tape stop audio effect plugin available in AU & VST3 for Mac (Windows coming soon). 
+cStop is a tape stop audio effect plugin available for Mac and Windows in VST3, CLAP, and AU (Mac only) formats.
 
 ## How to download
 
-cStop is currently only available for MacOS. Go to the [releases page](https://github.com/calgoheen/cStop/releases/tag/v1.0.0) to download the latest release installer.
+Go to the [releases page](https://github.com/calgoheen/cStop/releases) to download the latest release installer.
+
+**Mac:** Use the installer with extension **.pkg**
+
+**Windows:** Use the installer with extension **.exe**
 
 ## Tips on using
 
 - The only parameter you need to automate is called "Mode"
 - When using the tape START mode, the audio will be out of sync with real time until you go back to BYPASS
 
-## Build the code
+## Build instructions
 
+Mac:
 ```
-# clone the repo
-git clone https://github.com/calgoheen/cStop.git --recurse-submodules
+# Clone the repo
+git clone https://github.com/calgoheen/cStop.git
 
-# build with CMake
+# Build with CMake
 cmake -Bbuild -DCMAKE_BUILD_TYPE="Release"
 cmake --build build
+```
+
+Windows:
+```
+# Clone the repo
+git clone https://github.com/calgoheen/cStop.git
+
+# Build with CMake
+cmake -Bbuild
+cmake --build build --config Release
 ```
 
 ## License and Acknowledgements
