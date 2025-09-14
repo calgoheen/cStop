@@ -1,12 +1,12 @@
-name: Test
+name: Release
 
 on:
   push:
   pull_request:
 
 jobs:
-  test_code:
-    name: Test code
+  release_code:
+    name: Release code
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -53,6 +53,19 @@ jobs:
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --config ${{ matrix.build_type }}
 
-      - name: Test
-        working-directory: ${{ github.workspace }}/build
-        run: ctest --build-config ${{ matrix.build_type }}
+      - name: Zip artifacts
+        run: |
+          cd ${{ github.workspace }}/build/cStop_artefacts/Release
+          if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
+            zip -r cStop-linux-x86.zip .
+          elif [ "${{ matrix.os }}" = "macos-latest" ]; then
+            zip -r cStop-mac-x86.zip .
+          elif [ "${{ matrix.os }}" = "windows-latest" ]; then
+            7z a cStop-win-x86.zip .
+          fi
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cStop-${{ matrix.os == 'ubuntu-latest' && 'linux' || matrix.os == 'macos-latest' && 'mac' || 'win' }}-x86
+          path: ${{ github.workspace }}/build/cStop_artefacts/Release/cStop-*.zip
