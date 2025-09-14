@@ -43,7 +43,7 @@ jobs:
 
       - name: Install Linux dependencies
         if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get update && sudo apt-get install alsa freetype2 fontconfig gl libcurl webkit2gtk-4.0 gtk+-x11-3.0
+        run: sudo apt-get update && sudo apt-get install -y libasound2-dev libfreetype6-dev libfontconfig1-dev libgl1-mesa-dev libcurl4-openssl-dev libwebkit2gtk-4.0-dev libgtk-3-dev
 
       - name: Configure
         run: >
