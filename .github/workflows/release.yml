@@ -33,15 +33,18 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
         build_type: [Release]
         include:
-          - os: windows-latest
-            c_compiler: cl
-            cpp_compiler: cl
           - os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
+            filename: cStop-linux-x86.zip
           - os: macos-latest
             c_compiler: clang
             cpp_compiler: clang++
+            filename: cStop-mac-x86.zip
+          - os: windows-latest
+            c_compiler: cl
+            cpp_compiler: cl
+            filename: cStop-win-x86.zip
 
     steps:
       - name: Checkout code
@@ -66,11 +69,11 @@ jobs:
         run: |
           cd ${{ github.workspace }}/build/cStop_artefacts/Release
           if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
-            zip -r cStop-linux-x86.zip .
+            zip -r ${{ matrix.filename }} .
           elif [ "${{ matrix.os }}" = "macos-latest" ]; then
-            zip -r cStop-mac-x86.zip .
+            zip -r ${{ matrix.filename }} .
           elif [ "${{ matrix.os }}" = "windows-latest" ]; then
-            7z a cStop-win-x86.zip .
+            7z a ${{ matrix.filename }} .
           fi
 
       - name: Upload artifacts
@@ -79,8 +82,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/build/cStop_artefacts/Release/cStop-*.zip
-          asset_name: cStop-${{ matrix.os == 'ubuntu-latest' && 'linux' || matrix.os == 'macos-latest' && 'mac' || 'win' }}-x86
+          asset_path: ${{ github.workspace }}/build/cStop_artefacts/Release/${{ matrix.filename }}
+          asset_name: ${{ matrix.filename }}
           asset_content_type: application/zip
 
   publish_release:
