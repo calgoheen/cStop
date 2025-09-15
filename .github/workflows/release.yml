@@ -68,12 +68,10 @@ jobs:
       - name: Zip artifacts
         run: |
           cd ${{ github.workspace }}/build/cStop_artefacts/Release
-          if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
-            zip -r ${{ matrix.filename }} .
-          elif [ "${{ matrix.os }}" = "macos-latest" ]; then
-            zip -r ${{ matrix.filename }} .
-          elif [ "${{ matrix.os }}" = "windows-latest" ]; then
+          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
             7z a ${{ matrix.filename }} .
+          else
+            zip -r ${{ matrix.filename }} .
           fi
 
       - name: Upload artifacts
