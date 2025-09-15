@@ -65,14 +65,18 @@ jobs:
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --config ${{ matrix.build_type }}
 
-      - name: Zip artifacts
+      - name: Zip artifacts (Windows)
+        if: matrix.os == 'windows-latest'
         run: |
           cd ${{ github.workspace }}/build/cStop_artefacts/Release
-          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            7z a ${{ matrix.filename }} .
-          else
-            zip -r ${{ matrix.filename }} .
-          fi
+          7z a ${{ matrix.filename }} .
+        shell: cmd
+
+      - name: Zip artifacts (Unix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          cd ${{ github.workspace }}/build/cStop_artefacts/Release
+          zip -r ${{ matrix.filename }} .
 
       - name: Upload artifacts
         uses: actions/upload-release-asset@v1
