@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.22.1)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OSX deployment target")
 
+option(BUILD_STANDALONE "Build Standalone plugin format" ON)
+option(BUILD_VST3 "Build VST3 plugin format" ON)
+option(BUILD_CLAP "Build CLAP plugin format" ON)
+
 file(STRINGS "VERSION" CURRENT_VERSION)
 project("cStop" VERSION ${CURRENT_VERSION})
 
@@ -21,6 +25,16 @@ FetchContent_Declare(clap-juce-extensions
     GIT_TAG main)
 FetchContent_MakeAvailable(clap-juce-extensions)
 
+set(PLUGIN_FORMATS AU)
+
+if(BUILD_STANDALONE)
+    list(APPEND PLUGIN_FORMATS Standalone)
+endif()
+
+if(BUILD_VST3)
+    list(APPEND PLUGIN_FORMATS VST3)
+endif()
+
 juce_add_plugin(${PROJECT_NAME}
     COMPANY_NAME "CalGoheen"
     COMPANY_WEBSITE "https://calgoheen.com"
@@ -34,12 +48,14 @@ juce_add_plugin(${PROJECT_NAME}
     IS_MIDI_EFFECT FALSE
     EDITOR_WANTS_KEYBOARD_FOCUS FALSE
     COPY_PLUGIN_AFTER_BUILD TRUE
-    FORMATS Standalone AU VST3
+    FORMATS ${PLUGIN_FORMATS}
     PRODUCT_NAME ${PROJECT_NAME})
 
-clap_juce_extensions_plugin(TARGET ${PROJECT_NAME}
-    CLAP_ID "com.CalGoheen.${PROJECT_NAME}"
-    CLAP_FEATURES "audio effect" "mono" "stereo")
+if(BUILD_CLAP)
+    clap_juce_extensions_plugin(TARGET ${PROJECT_NAME}
+        CLAP_ID "com.CalGoheen.${PROJECT_NAME}"
+        CLAP_FEATURES "audio effect" "mono" "stereo")
+endif()
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
