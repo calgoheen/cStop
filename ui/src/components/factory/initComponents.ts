@@ -26,7 +26,7 @@ function createSlider() {
     return { container, label, knob, valueInput };
 }
 
-function attachContinuousSlider(slider: ReturnType<typeof createSlider>, paramId: string, name: string) {
+function attachContinuousSlider(slider: ReturnType<typeof createSlider>, paramId: string, name: string, label = "") {
     slider.label.textContent = name;
 
     const state = Juce.getSliderState(paramId);
@@ -39,7 +39,7 @@ function attachContinuousSlider(slider: ReturnType<typeof createSlider>, paramId
         slider.valueInput.setProperties(
             (val) => {
                 const scaledValue = convertFrom0to1(val, state.properties.start, state.properties.end, state.properties.skew);
-                return formatDisplayValue(scaledValue, state.properties.label);
+                return formatDisplayValue(scaledValue, label !== "" ? label : state.properties.label);
             },
             (s) => {
                 const val = parseFloat(s);
@@ -59,9 +59,9 @@ function attachContinuousSlider(slider: ReturnType<typeof createSlider>, paramId
     });
 }
 
-export function initContinuousSlider(paramId: string, name = "") {
+export function initContinuousSlider(paramId: string, name = "", label = "") {
     const slider = createSlider();
-    attachContinuousSlider(slider, paramId, name);
+    attachContinuousSlider(slider, paramId, name, label);
 
     return slider.container;
 }

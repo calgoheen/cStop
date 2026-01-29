@@ -68,7 +68,7 @@ const slowdown = document.getElementById("slowdown")!;
 const slowdownCurve = initCurve(params.slowdownCurve, params.slowdownStart, params.slowdownEnd, "slowdown");
 slowdown.appendChild(slowdownCurve);
 
-const slowdownLength = initContinuousSlider(params.slowdownLength, "Length");
+const slowdownLength = initContinuousSlider(params.slowdownLength, "Length", "s");
 slowdown.appendChild(slowdownLength);
 
 const slowdownLengthSync = initDiscreteSlider(params.slowdownLengthSync, "Length");
@@ -79,7 +79,7 @@ const speedup = document.getElementById("speedup")!;
 const speedupCurve = initCurve(params.speedupCurve, params.speedupStart, params.speedupEnd, "speedup");
 speedup.appendChild(speedupCurve);
 
-const speedupLength = initContinuousSlider(params.speedupLength, "Length");
+const speedupLength = initContinuousSlider(params.speedupLength, "Length", "s");
 speedup.appendChild(speedupLength);
 
 const speedupLengthSync = initDiscreteSlider(params.speedupLengthSync, "Length");
