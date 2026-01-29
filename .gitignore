@@ -1,2 +1,6 @@
-build
 .vscode
+build
+dist
+node_modules
+external
+*.tsbuildinfo

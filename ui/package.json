@@ -1,0 +1,28 @@
+{
+    "name": "ui",
+    "version": "1.0.0",
+    "description": "",
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "start": "vite",
+        "build": "vite build",
+        "watch": "tsc --watch",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "lint": "oxlint .",
+        "lint:fix": "oxlint --fix ."
+    },
+    "devDependencies": {
+        "@types/plotly.js-dist": "npm:@types/plotly.js@^3.0.8",
+        "oxlint": "^1.24.0",
+        "prettier": "^3.6.2",
+        "typescript": "^5.8.3",
+        "vite": "^6.3.3"
+    },
+    "dependencies": {
+        "plotly.js-dist": "^3.2.0"
+    }
+}

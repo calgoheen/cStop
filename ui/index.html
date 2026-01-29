@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+    <head>
+        <title>cStop</title>
+        <script src="./src/index.ts" type="module"></script>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overscroll-behavior: none;
+            }
+            body * {
+                box-sizing: border-box;
+            }
+            .padding {
+                padding: 5px 20px;
+            }
+            .column {
+                display: flex;
+                flex-direction: column;
+            }
+            .row {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .text {
+                color: var(--text);
+                cursor: default;
+                user-select: none;
+                -webkit-user-select: none;
+            }
+            .label {
+                font: 2.6vh sans-serif;
+                text-align: center;
+                padding-bottom: 4px;
+            }
+            .knob {
+                width: 70px;
+                height: 70px;
+                align-self: center;
+            }
+            .value-input {
+                width: 80px;
+                height: 20px;
+                font: 2.6vh sans-serif;
+                text-align: center;
+                background: var(--background-light);
+                color: var(--text);
+                outline: none;
+                box-shadow: none;
+                appearance: none;
+                border: none;
+                border-radius: 0;
+            }
+            .curve-plot {
+                width: 130px;
+                height: 110px;
+            }
+            .button {
+                width: 70px;
+                height: 40px;
+            }
+            .toggle {
+                height: 30px;
+            }
+            .radio {
+                width: 70px;
+                height: 80px;
+            }
+            .section-header {
+                font: 3vh sans-serif;
+                align-items: start;
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+            #header {
+                background-color: var(--background-darker);
+                justify-content: space-between;
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+            #content {
+                background-color: var(--background-light);
+                flex: 1;
+                justify-content: space-evenly;
+            }
+            #title {
+                font: 4vh sans-serif;
+            }
+            #filter-border {
+                margin: 5px 20px;
+                padding-bottom: 5px;
+                border: 1px solid var(--highlight-dark);
+                border-radius: 6px;
+            }
+            #filter-header {
+                padding-left: 10px;
+                padding-top: 5px;
+            }
+        </style>
+    </head>
+    <body class="column">
+        <div id="header" class="row padding">
+            <div id="title" class="text">cStop</div>
+            <div id="buttons" class="row"></div>
+        </div>
+        <div id="content" class="column">
+            <div id="settings" class="row padding"></div>
+            <div id="slowdown-header" class="text padding section-header">Slowdown</div>
+            <div id="slowdown" class="row"></div>
+            <div id="speedup-header" class="text padding section-header">Speedup</div>
+            <div id="speedup" class="row"></div>
+            <div id="filter-border" class="column">
+                <div id="filter-header" class="text section-header">Filter</div>
+                <div id="filter" class="row"></div>
+            </div>
+        </div>
+    </body>
+</html>

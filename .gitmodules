@@ -1,0 +1,3 @@
+[submodule "cgo_modules"]
+	path = cgo_modules
+	url = https://github.com/calgoheen/cgo_modules.git
