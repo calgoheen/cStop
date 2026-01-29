@@ -80,16 +80,10 @@ if(USE_LOCAL_SERVER)
         PUBLIC 
             WEB_VIEW_URL="http://localhost:5173/")
 else()
-    find_program(NPM_EXECUTABLE NAMES npm.cmd npm)
-    if(NOT NPM_EXECUTABLE)
-        message(FATAL_ERROR "npm not found. Please install Node.js")
-    endif()
-
-    execute_process(
-        COMMAND ${NPM_EXECUTABLE} run build
-        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/ui")
-
-    execute_process(
+    add_custom_command(OUTPUT "${CMAKE_BINARY_DIR}/dist.zip"
+        COMMAND npm install
+        COMMAND npm run build
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/ui"
         COMMAND ${CMAKE_COMMAND} -E tar cf "${CMAKE_BINARY_DIR}/dist.zip" --format=zip .
         WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/ui/dist")
 
