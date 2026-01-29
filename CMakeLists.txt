@@ -66,6 +66,13 @@ target_compile_definitions(${PROJECT_NAME}
         JUCE_WEB_BROWSER=1
         JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1)
 
+if(WIN32)
+    target_compile_definitions(${PROJECT_NAME}
+        PUBLIC
+            WIN32_LEAN_AND_MEAN
+            NOMINMAX)
+endif()
+
 file(COPY "${JUCE_MODULES_DIR}/juce_gui_extra/native/javascript/" DESTINATION "${CMAKE_SOURCE_DIR}/ui/src/juce/")
 
 if(USE_LOCAL_SERVER)
@@ -73,8 +80,13 @@ if(USE_LOCAL_SERVER)
         PUBLIC 
             WEB_VIEW_URL="http://localhost:5173/")
 else()
+    find_program(NPM_EXECUTABLE NAMES npm.cmd npm)
+    if(NOT NPM_EXECUTABLE)
+        message(FATAL_ERROR "npm not found. Please install Node.js")
+    endif()
+
     execute_process(
-        COMMAND npm run build
+        COMMAND ${NPM_EXECUTABLE} run build
         WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/ui")
 
     execute_process(
