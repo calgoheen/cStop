@@ -66,7 +66,7 @@ export class Knob extends HighDPICanvas {
 
         this.mouseMove = (e) => {
             if (!this.dragging) return;
-            const delta = (startY - e.clientY) * (e.shiftKey ? 0.001 : 0.005);
+            const delta = (startY - e.clientY) * (e.shiftKey ? 7.5e-4 : 3.75e-3);
 
             this.setValue(startValue + delta);
             this.onChange(this.value);
