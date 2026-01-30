@@ -54,7 +54,6 @@ cmake --build build
 ## Dependencies and Acknowledgements
 
 - [JUCE](https://github.com/juce-framework/JUCE)
-- UI is built with [foleys_gui_magic](https://github.com/ffAudio/foleys_gui_magic)
 - DSP modules from [chowdsp_utils](https://github.com/Chowdhury-DSP/chowdsp_utils)
 - CLAP plugin format is built with [clap-juce-extensions](https://github.com/free-audio/clap-juce-extensions)
 - Thanks to [Jan Wilczek](https://github.com/JanWilczek/juce-webview-tutorial) for his very helpful JUCE WebView tutorial
