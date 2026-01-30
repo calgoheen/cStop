@@ -1,6 +1,6 @@
 # cStop
 
-<p align="center"><img src="cStop.png"></p>
+<p align="center"><img src="cStop.png" width="40%"></p>
 
 cStop is a tape stop audio effect plugin available for Mac and Windows in VST3, CLAP, and AU formats.
 
