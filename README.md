@@ -33,7 +33,7 @@ Go to the [releases page](https://github.com/calgoheen/cStop/releases) to downlo
 
 - [Node.js](https://nodejs.org/en)
 - [CMake](https://cmake.org/)
-- [Ninja](https://ninja-build.org/) if building on Windows
+- [Ninja](https://ninja-build.org/)
 
 ### Build
 
@@ -42,13 +42,9 @@ Go to the [releases page](https://github.com/calgoheen/cStop/releases) to downlo
 git clone --recurse-submodules https://github.com/calgoheen/cStop.git
 cd cStop
 
-# Mac
-cmake -Bbuild -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-
-# Windows
-cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release
-cmake --build build
+# Configure and build
+cmake --preset release
+cmake --build --preset release
 ```
 
 ## Dependencies and Acknowledgements
