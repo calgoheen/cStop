@@ -40,12 +40,29 @@ void Processor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer
     tapeStop.processBlock (buffer, midi, getPlayHead());
 }
 
-void Processor::getStateInformation (juce::MemoryBlock&)
+void Processor::getStateInformation (juce::MemoryBlock& destData)
 {
+    const auto parameterState = state.copyState();
+    const auto stateXml = parameterState.createXml();
+
+    if (stateXml != nullptr)
+        copyXmlToBinary (*stateXml, destData);
 }
 
-void Processor::setStateInformation (const void*, int)
+void Processor::setStateInformation (const void* data, int sizeInBytes)
 {
+    if (data == nullptr || sizeInBytes <= 0)
+        return;
+
+    const auto stateXml = getXmlFromBinary (data, sizeInBytes);
+
+    if (stateXml == nullptr || ! stateXml->hasTagName (state.state.getType()))
+        return;
+
+    auto parameterState = juce::ValueTree::fromXml (*stateXml);
+
+    if (parameterState.isValid())
+        state.replaceState (parameterState);
 }
 
 bool Processor::hasEditor() const
