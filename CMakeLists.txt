@@ -83,9 +83,8 @@ else()
     add_custom_command(OUTPUT "${CMAKE_BINARY_DIR}/dist.zip"
         COMMAND npm install
         COMMAND npm run build
-        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/ui"
-        COMMAND ${CMAKE_COMMAND} -E tar cf "${CMAKE_BINARY_DIR}/dist.zip" --format=zip .
-        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/ui/dist")
+        COMMAND ${CMAKE_COMMAND} -E chdir dist ${CMAKE_COMMAND} -E tar cf "${CMAKE_BINARY_DIR}/dist.zip" --format=zip .
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/ui")
 
     juce_add_binary_data(Resources SOURCES "${CMAKE_BINARY_DIR}/dist.zip")
     target_link_libraries(${PROJECT_NAME} PUBLIC Resources)
