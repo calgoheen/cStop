@@ -45,8 +45,15 @@ jobs:
         with:
           arch: x64
 
+      - name: Install WebView2 SDK (NuGet)
+        shell: pwsh
+        run: |
+          nuget install Microsoft.Web.WebView2 -Version 1.0.1901.177 -OutputDirectory "$PWD\build\nuget" -ExcludeVersion
+          echo "WEBVIEW2_SDK=$PWD\build\nuget" >> $env:GITHUB_ENV
+
       - name: Configure
-        run: cmake --preset release
+        shell: pwsh
+        run: cmake --preset release "-DJUCE_WEBVIEW2_PACKAGE_LOCATION=$env:WEBVIEW2_SDK"
 
       - name: Build
         run: cmake --build --preset release
